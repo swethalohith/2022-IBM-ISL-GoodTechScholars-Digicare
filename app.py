@@ -1,18 +1,21 @@
-import json
-from unittest import result
-from flask import Flask, jsonify, request, url_for
-from flask_pymongo import PyMongo
-import pymongo
+from flask import Flask, render_template
+
 
 
 app = Flask(__name__)
 
-app.config['MONGO_URI'] = "mongodb://localhost:27017/dbtestmongo"
-#connector
-mongo = PyMongo(app)
-db = mongo.db
-
-
-@app.route('/login')
+@app.route('/')
 def login():
     return render_template('login.html')
+
+@app.route('/index')
+def index():
+    return render_template('index.html')
+
+@app.route('/medicaldetails')
+def medicaldetails():
+    return render_template('medicaldetails.html')
+    
+@app.route('/medicalhistory')
+def medicalhistory():
+    return render_template('medicalhistory.html')
