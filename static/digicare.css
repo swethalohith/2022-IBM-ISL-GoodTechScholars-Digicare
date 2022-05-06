@@ -9,6 +9,7 @@ body {
     overflow-x: hidden;
 }
 
+p, span { color: #999; }
 hr { 
     border-top-color: #CCC; 
     margin-top: 10px;
@@ -47,15 +48,15 @@ hr {
 }
 
 .tm-site-header {
-    margin-top: 50px;
-    margin-bottom: 115px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .tm-site-logo {
     width: 75px;
     height: 75px;
     border-radius: 50%;
-    background-color: white;    
+    background-color: #0CC;;    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,7 +66,7 @@ hr {
 
 .tm-main {
     margin-left: 400px;
-    padding: 80px 100px 25px;
+    padding: 2px 100px 200px;
 }
 
 .tm-post { max-width: 470px; }
