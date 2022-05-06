@@ -1,12 +1,8 @@
-from flask import request, url_for
-from flask_pymongo import PyMongo
-import pymongo
-from app import app
+from flask import request, url_for, jsonify
+from app import db, mongo, app
 
-
-@app.route('/')
-def index():
-    #return render_template('index.html')
+class User:
+  def upload():
     
     return '''
     <form method = 'POST' action="/create" enctype="multipart/form-data">
@@ -21,8 +17,8 @@ def index():
       </form>
       '''
 
-@app.route('/create',methods=['POST'])
-def create():
+  @app.route('/create',methods=['POST'])
+  def create():
     #db = pymongo.MongoClient("localhost:27017")
     if 'lab_test' in request.files:
         lab_test = request.files['lab_test']
@@ -30,13 +26,14 @@ def create():
         mongo.db.user.insert_one({'username' : request.form.get('username'),'name' : request.form.get('name'),'dob' : request.form.get('dob'),'address' : request.form.get('address'),'mobile' : request.form.get('mobile'),'gender' : request.form.get('gender'), 'lab_test_name' : lab_test.filename})
     return 'done'
     
-@app.route('/file/<filename>')
-def file(filename):
+  @app.route('/file/<filename>')
+  def file(filename):
     return mongo.send_file(filename)
 
-@app.route('/profile/<username>')
-def profile(username):
+  @app.route('/profile/<username>')
+  def profile(username):
     user= mongo.db.user.find_one({'username': username})
+    return jsonify(user)
     return f'''
     <h1>{username}</h1>
     <h1>{user.name}</h1>
