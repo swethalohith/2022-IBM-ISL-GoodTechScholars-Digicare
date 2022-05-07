@@ -46,10 +46,24 @@ DigiCare is a web application that stores a person’s complete medical history.
 ## Webpages
 Login page
 
+![loginpage](https://user-images.githubusercontent.com/104809724/167249063-2dba4a44-1e8a-42e0-923d-fae68de5f227.png)
+
+
 Login-OTP verification page
+
+![loginotp](https://user-images.githubusercontent.com/104809724/167249072-5c4a06f6-cdfa-4c97-93b5-0edfecf56b53.png)
+
 
 Personal Details
 
+![index](https://user-images.githubusercontent.com/104809724/167249095-dfa93ea1-a3b5-43c9-ad4c-7a99a686d790.png)
+
+
 Medical Details
 
+![medicaldetails](https://user-images.githubusercontent.com/104809724/167249104-1713be72-c907-4c91-a9d8-19941390c783.png)
+
+
 Medical History
+
+![medicalhistory](https://user-images.githubusercontent.com/104809724/167249116-c80277de-b4c9-4196-8352-94e6d7318f7d.png)
