@@ -16,6 +16,11 @@ db = mongo.db
 def login():
     return render_template('login.html')
 
+@app.route('/loginotp')
+def loginotp():
+    return render_template('loginotp.html')
+
+
 @app.route('/index')
 def index():
     return render_template('index.html')
