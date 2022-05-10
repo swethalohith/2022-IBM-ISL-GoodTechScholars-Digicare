@@ -1,7 +1,61 @@
 from flask import request, url_for, jsonify
 from app import db, mongo, app
+from unicodedata import name
+from flask import Flask, render_template, request, url_for, redirect
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
 
-class User:
+app = Flask(__name__)
+
+app.config['MONGO_URI'] = 'mongodb://localhost:27017/dbtestmongo'
+mongo = PyMongo(app)
+
+
+
+todos = mongo.db.todos
+
+@app.route('/')
+def index():
+    saved_todos = todos.find()
+    return render_template('index.html', todos=saved_todos)
+
+@app.route('/add', methods=['POST'])
+def add_todo():
+    username = request.form.get('username')
+    name = request.form.get('name')
+    dob = request.form.get('dob')
+    address = request.form.get('address')
+    mobile = request.form.get('mobile')
+    gender = request.form.get('gender')
+    todos.insert_one({'text' : username, 'complete' : False})
+    todos.insert_one({'text' : name, 'complete' : False})
+    todos.insert_one({'text' : dob, 'complete' : False})
+    todos.insert_one({'text' : address, 'complete' : False})
+    todos.insert_one({'text' : mobile, 'complete' : False})
+    todos.insert_one({'text' : gender, 'complete' : False})
+    return redirect(url_for('index'))
+
+@app.route('/complete/<oid>')
+def complete(oid):
+    todo_item = todos.find_one({'_id': ObjectId(oid)})
+    todo_item['complete'] = True
+    todos.save(todo_item)
+    return redirect(url_for('index'))
+
+@app.route('/delete_completed')
+def delete_completed():
+    todos.delete_many({'complete' : True})
+    return redirect(url_for('index'))
+
+@app.route('/delete_all')
+def delete_all():
+    todos.delete_many({})
+    return redirect(url_for('index'))
+
+
+
+
+<!--class User:
   def upload():
     
     return '''
@@ -39,3 +93,4 @@ class User:
     <h1>{user.name}</h1>
     <img src ="{url_for('file',filename = user['lab_test_name'])}">
     '''
+-->
