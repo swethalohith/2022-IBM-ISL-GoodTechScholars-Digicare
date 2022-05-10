@@ -67,3 +67,5 @@ Medical Details
 Medical History
 
 ![medicalhistory](https://user-images.githubusercontent.com/104809724/167249116-c80277de-b4c9-4196-8352-94e6d7318f7d.png)
+
+
